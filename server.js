@@ -14,6 +14,7 @@ const saltRounds = 10;
 const db = knex({
     client: 'pg',
     connection: {
+      url:'postgresql:postgres:KTPZ9LUShzeB7kQLfHVo@containers-us-west-62.railway.app:7936/railway',
       host : 'containers-us-west-62.railway.app',
       port : 7936,
       user : 'postgres',
