@@ -29,7 +29,7 @@ const handleSignup = (req,res,db,bcrypt,saltRounds) => {
                 .catch(trx.rollback)
             })
               
-    .catch(err => res.status(400).json("unable to signup"))
+    .catch(err => res.status(400).json("Unable to signup"))
 }
 
 export default handleSignup;
