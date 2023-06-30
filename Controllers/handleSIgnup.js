@@ -1,4 +1,9 @@
-const handleSignup = (req,res,db,bcrypt,saltRounds) => {
+const handleSignup = (req,res,db,bcrypt,saltRounds,moment) => {
+
+    const currentTime = moment().tz('Asia/Dhaka').format('YYYY-MM-DD HH:mm:ss');
+    const joinedTimestamp = moment(currentTime, 'YYYY-MM-DD HH:mm:ss').toISOString();
+
+
     const {name, email, password} = req.body;
 
     if(!email.includes("@") && !email.includes(".com")) {
@@ -20,7 +25,7 @@ const handleSignup = (req,res,db,bcrypt,saltRounds) => {
             .insert({
                 name:name,
                 email:loginEmail[0].email,
-                joined:new Date().toLocaleString('en-US', { timeZone: 'Asia/Dhaka' })
+                joined:joinedTimestamp
             }).then(user => {
                 res.json(user[0]);
             })

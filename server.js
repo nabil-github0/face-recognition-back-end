@@ -2,6 +2,7 @@ import express from "express";
 import bcrypt from 'bcrypt';
 import cors from "cors";
 import knex from 'knex';
+import moment from 'moment-timezone';
 import {ClarifaiStub, grpc} from "clarifai-nodejs-grpc";
 import handleSignup from "./Controllers/handleSIgnup.js";
 import handleSIgnin from "./Controllers/handleSignin.js";
@@ -14,12 +15,11 @@ const saltRounds = 10;
 const db = knex({
     client: 'pg',
     connection: {
-      url:'postgresql:postgres:KTPZ9LUShzeB7kQLfHVo@containers-us-west-62.railway.app:7936/railway',
-      host : 'containers-us-west-62.railway.app',
-      port : 7936,
-      user : 'postgres',
-      password : 'KTPZ9LUShzeB7kQLfHVo',
-      database : 'railway'
+      host : '',
+      port : 0,
+      user : '',
+      password : '',
+      database : ''
     }
   });
 
@@ -34,7 +34,7 @@ app.get("/",(req,res) => {
 
 app.post("/signin", (req,res) => {handleSIgnin(req,res,db,bcrypt)})
 
-app.post("/signup", (req, res) => {handleSignup(req,res,db,bcrypt,saltRounds)})
+app.post("/signup", (req, res) => {handleSignup(req,res,db,bcrypt,saltRounds,moment)})
 
 app.get("/profile/:id", (req,res) => {handleProfile(req,res,db)})
 

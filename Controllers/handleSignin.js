@@ -14,12 +14,12 @@ const handleSIgnin = (req, res, db, bcrypt) => {
             .then(user => {
                  res.json(user[0])
             })
-            .catch(err => res.status(400).json("unable to sign in"))
+            .catch(err => res.status(400).json("Unable to sign in"))
         }else {
-            res.status(400).json("Wrong username or password")
+            res.status(400).json("Wrong email or password")
         }
     })
-    .catch(err => res.status(400).json("Wrong username or password"))
+    .catch(err => res.status(400).json("Unable to signin please try again"))
 }
 
 export default handleSIgnin;
