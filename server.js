@@ -9,7 +9,6 @@ import handleImage from "./Controllers/handleImage.js";
 import handleProfile from "./Controllers/handleProfile.js";
 import handleImageURL from "./Controllers/handleImageURL.js";
 
-const PORT = process.env.PORT || 3000;
 const saltRounds = 10;
 
 const db = knex({
@@ -42,6 +41,6 @@ app.put("/image", (req,res) => {handleImage(req,res,db)})
 
 app.post("/imageURL", (req,res) => {handleImageURL(req,res,ClarifaiStub,grpc)})
 
-app.listen(PORT ,() => {
-    console.log(`app is runnig on port ${PORT}`)
+app.listen(process.env.PORT || 3000 ,() => {
+    console.log(`app is runnig on port ${process.env.PORT}`)
 })
