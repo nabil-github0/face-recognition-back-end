@@ -15,11 +15,10 @@ const saltRounds = 10;
 const db = knex({
     client: 'pg',
     connection: {
-      host : '',
-      port : 0,
-      user : '',
-      password : '',
-      database : ''
+      host : 'ep-tight-dew-39886618.us-east-2.aws.neon.tech',
+      user : 'nabil-github0',
+      password : '8jGqmp3tMngl',
+      database : 'neondb'
     }
   });
 
